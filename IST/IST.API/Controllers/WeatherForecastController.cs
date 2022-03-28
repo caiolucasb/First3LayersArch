@@ -3,7 +3,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using IST.DAL.Repository;
+using IST.DAL.Entities;
 
 namespace IST.API.Controllers
 {
@@ -11,29 +12,37 @@ namespace IST.API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly DbAcess _db;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+            _db = new DbAcess();
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("/Customer/{id}")]
+        public Customer GetOne(int id)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return _db.GetACustomer(id);
+        }
+        [HttpGet("/Customers")]
+        public List<Customer> GetAll()
+        {
+            return _db.GetAllCustomers();
+        }
+        [HttpPost("/Customer")]
+        public IActionResult CreateCustomer([FromBody] Customer customer)
+        {
+            _db.AddANewCustomer(customer);
+            return Ok(customer);
+        }
+        [HttpPost("/Order")]
+        public IActionResult CreateOrder([FromBody] Order order)
+        {
+            _db.AddANewOrder(order);
+            return Ok(order);
         }
     }
 }
