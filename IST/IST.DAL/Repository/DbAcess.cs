@@ -17,29 +17,24 @@ namespace IST.DAL.Repository
 
         public void AddANewOrder(Order order)
         {
-            Console.WriteLine(order);
             _context.Orders.Add(order);
             _context.SaveChanges();
         }
 
         public void AddANewCustomer(Customer customer)
         {
-            Console.WriteLine(customer);
             _context.Customers.Add(customer);
             _context.SaveChanges();
         }
 
         public List<Customer> GetAllCustomers()
         {
-            var c = _context.Customers.ToList();
-            Console.WriteLine(c);
-            return c;
+            return _context.Customers.ToList();
         }
 
         public Customer GetACustomer(int id)
         {
-            var c = _context.Customers.SingleOrDefault(x => x.Id == id);
-            return c;
+            return _context.Customers.SingleOrDefault(x => x.Id == id);
         }
     } 
 }
