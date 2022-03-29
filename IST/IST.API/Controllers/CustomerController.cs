@@ -4,20 +4,16 @@ using System.Collections.Generic;
 using IST.BLL.DTO;
 using IST.BLL.Services;
 
-
 namespace IST.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-
-        private readonly ILogger<WeatherForecastController> _logger;
         private readonly AcessDAL _db;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public CustomerController()
         {
-            _logger = logger;
             _db = new AcessDAL();
         }
 
