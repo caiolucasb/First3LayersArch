@@ -21,7 +21,6 @@ Clone o repositório do GitHub
 
 ## **Rodar o Projeto via CLI**
 
-<<<<<<< HEAD
 **Para rodar o projeto é necessário ter [.NET](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) e [MsSql](https://docs.microsoft.com/pt-br/sql/?view=sql-server-ver15) instalados na sua máquina**
 
 **Após instalar o framework é necessario subir as migrações para o banco**
