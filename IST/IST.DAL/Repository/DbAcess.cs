@@ -41,5 +41,16 @@ namespace IST.DAL.Repository
         {
             return _context.Orders.Where(order => order.Customer.Id == id).ToList();
         }
+
+        public Order GetOrderById(int id)
+        {
+            return _context.Orders.SingleOrDefault(x => x.Id == id);
+        }
+        public void UpdateOrderStatus(int id, bool status)
+        {
+            var order = GetOrderById(id);
+            order.Status = status ? "Approved" : "Denied";
+            _context.SaveChanges();
+        }
     } 
 }
