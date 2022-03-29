@@ -24,7 +24,7 @@ Clone o repositório do GitHub
 **Para rodar o projeto é necessário ter [.NET](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) e [MsSql](https://docs.microsoft.com/pt-br/sql/?view=sql-server-ver15) instalados na sua máquina**
 
 **Após instalar o framework é necessario subir as migrações para o banco**
-Para isso você terá que mudar a string de conecção no arquivo CustomerDbContext.cd e colocar a sua propria
+Para isso você terá que mudar a string de conexão no arquivo CustomerDbContext.cd e colocar a sua propria
 
 Agora basta executar o seguinte comando
 
@@ -49,13 +49,13 @@ Agora basta executar o seguinte comando
     # Rodar o projeto
     > dotnet run
 ```
-Assim que o projeto rodar acesse "https://localhost:5001/swagger"
+Assim que o projeto rodar acesse "http://localhost:5000/swagger"
 
 ## **Testes Unitários**
 
 Os Testes foram feitos com [xUnit](https://xunit.net/)
 
-Para rodar os testes da aplicação é necessário fazer os passos acima.
+Para rodar os testes da aplicação é necessário fazer os passos abaixo.
 
 ```bash
     # Ir para o diretório dos testes
