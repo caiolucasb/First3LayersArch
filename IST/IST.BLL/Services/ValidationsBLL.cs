@@ -21,13 +21,7 @@ namespace IST.BLL.Services
 
         public bool IsValidName(string name)
         {
-            Regex regex = new Regex(
-              @"^[a-zA-Z]+$",
-            RegexOptions.IgnoreCase
-            | RegexOptions.CultureInvariant
-            | RegexOptions.IgnorePatternWhitespace
-            | RegexOptions.Compiled
-            );
+            Regex regex = new Regex(@"[\p{L} ]+$");
 
            if(regex.IsMatch(name))
                 return true;
