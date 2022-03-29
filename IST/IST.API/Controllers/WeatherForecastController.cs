@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using IST.DAL.Repository;
-using IST.DAL.Entities;
+using IST.BLL.DTO;
+using IST.BLL.Services;
+
 
 namespace IST.API.Controllers
 {
@@ -14,34 +13,34 @@ namespace IST.API.Controllers
     {
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly DbAcess _db;
+        private readonly AcessDAL _db;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _db = new DbAcess();
+            _db = new AcessDAL();
         }
 
         [HttpGet("/Customer/{id}")]
-        public Customer GetOne(int id)
+        public OutboundCustomerWithOrders GetOne(int id)
         {
-            return _db.GetACustomer(id);
+            return _db.GetACustomerBLL(id);
         }
         [HttpGet("/Customers")]
-        public List<Customer> GetAll()
+        public List<OutboundCustomer> GetAll()
         {
-            return _db.GetAllCustomers();
+            return _db.GetAllCustomersBLL();
         }
         [HttpPost("/Customer")]
-        public IActionResult CreateCustomer([FromBody] Customer customer)
+        public IActionResult CreateCustomer([FromBody] InboundCustomer customer)
         {
-            _db.AddANewCustomer(customer);
+            _db.CreateACustomerBLL(customer);
             return Ok(customer);
         }
         [HttpPost("/Order")]
-        public IActionResult CreateOrder([FromBody] Order order)
+        public IActionResult CreateOrder([FromBody] InboundOrder order)
         {
-            _db.AddANewOrder(order);
+            _db.CreateAOrder(order);
             return Ok(order);
         }
     }
