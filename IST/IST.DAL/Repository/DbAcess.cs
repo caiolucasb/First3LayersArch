@@ -36,5 +36,10 @@ namespace IST.DAL.Repository
         {
             return _context.Customers.SingleOrDefault(x => x.Id == id);
         }
+
+        public List<Order> GetOrdersByCustomerId(int id)
+        {
+            return _context.Orders.Where(order => order.Customer.Id == id).ToList();
+        }
     } 
 }
