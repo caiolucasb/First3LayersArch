@@ -17,40 +17,101 @@ namespace IST.DAL.Repository
 
         public void AddANewOrder(Order order)
         {
-            _context.Orders.Add(order);
-            _context.SaveChanges();
+            try
+            {
+                _context.Orders.Add(order);
+                _context.SaveChanges();
+            }
+            catch(Exception)
+            {
+                throw;
+            } 
         }
 
         public void AddANewCustomer(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            try
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public List<Customer> GetAllCustomers()
         {
-            return _context.Customers.ToList();
+            try
+            {
+                List<Customer> customers = _context.Customers.ToList();
+                if(customers == null)
+                    throw new Exception("Cannot find any customers in database");
+                return customers;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Customer GetACustomer(int id)
         {
-            return _context.Customers.SingleOrDefault(x => x.Id == id);
+            try
+            {
+                Customer customer = _context.Customers.SingleOrDefault(x => x.Id == id);
+                if (customer == null)
+                    throw new Exception("Cannot find this id in database");
+                return customer;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public List<Order> GetOrdersByCustomerId(int id)
         {
-            return _context.Orders.Where(order => order.Customer.Id == id).ToList();
+            try
+            {
+                List<Order> orders = _context.Orders.Where(order => order.Customer.Id == id).ToList();
+                if (orders == null)
+                    throw new Exception("Cannot find this CustomerId in database");
+                return orders;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Order GetOrderById(int id)
         {
-            return _context.Orders.SingleOrDefault(x => x.Id == id);
+            try
+            {
+                Order order = _context.Orders.SingleOrDefault(x => x.Id == id);
+                if (order == null)
+                    throw new Exception("Cannot find this orderId in database");
+                return order;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public void UpdateOrderStatus(int id, bool status)
         {
-            var order = GetOrderById(id);
-            order.Status = status ? "Approved" : "Denied";
-            _context.SaveChanges();
+            try
+            {
+                var order = GetOrderById(id);
+                order.Status = status ? "Approved" : "Denied";
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     } 
 }
