@@ -21,13 +21,27 @@ Clone o repositório do GitHub
 
 ## **Rodar o Projeto via CLI**
 
-**Para rodar o projeto é necessário ter [.NET](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) instalado na sua máquina**
+<<<<<<< HEAD
+**Para rodar o projeto é necessário ter [.NET](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) e [MsSql](https://docs.microsoft.com/pt-br/sql/?view=sql-server-ver15) instalados na sua máquina**
 
-Após instalar o framework é necessario estar no mesmo diretório da api para rodar o projeto
+**Após instalar o framework é necessario subir as migrações para o banco**
+Para isso você terá que mudar a string de conecção no arquivo CustomerDbContext.cd e colocar a sua propria
+
+Agora basta executar o seguinte comando
+
+```bash
+    # Ir para o diretorio de acesso a dados
+    > cd IST && cd IST.DAL
+
+    # Subir migrações para o banco
+    > dotnet ef database update
+```
+
+Agora vamos para o diretório da api para rodar o projeto
 
 ```bash
     # Ir para o diretório da API
-    > cd IST && cd IST.API
+    > cd .. && cd IST.API
 ```
 
 Agora basta executar o seguinte comando
