@@ -15,7 +15,7 @@ namespace IST.DAL.Entities
         public DateTime CreatedAt { get; set; }
         [Required]
         public string Status { get; set; }
-        [Required]
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
     }
 }
