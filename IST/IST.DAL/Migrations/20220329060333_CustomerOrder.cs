@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IST.DAL.Migrations
 {
-    public partial class CustomerAndOrder : Migration
+    public partial class CustomerOrder : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
