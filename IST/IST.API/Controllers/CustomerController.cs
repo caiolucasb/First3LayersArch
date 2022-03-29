@@ -38,5 +38,11 @@ namespace IST.API.Controllers
             _db.CreateAOrder(order);
             return Ok(order);
         }
+        [HttpPatch("/Order/{orderId}/Status/{status}")]
+        public IActionResult UpdateOrderStatus(int orderId, bool status)
+        {
+            _db.UpdateStatus(orderId, status);
+            return Ok("The order's status was updated!");
+        }
     }
 }

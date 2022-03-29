@@ -41,5 +41,10 @@ namespace IST.BLL.Services
             var order = _orderFactory.InboundOrderToEntity(inbound);
             _db.AddANewOrder(order);
         }
+
+        public void UpdateStatus(int orderId, bool status)
+        {
+            _db.UpdateOrderStatus(orderId, status);
+        }
     }
 }
