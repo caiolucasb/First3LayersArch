@@ -3,6 +3,8 @@ using IST.BLL.DTO;
 using IST.DAL.Repository;
 using IST.BLL.FactoryDTO;
 using System.Collections.Generic;
+using IST.DAL.AppSettings;
+using Microsoft.Extensions.Options;
 
 namespace IST.BLL.Services
 {
@@ -12,9 +14,9 @@ namespace IST.BLL.Services
         private readonly CustomerFactory _customerFactory;
         private readonly OrderFactory _orderFactory;
         private readonly ValidationsBLL _validations;
-        public AcessDAL()
+        public AcessDAL(IOptions<ConnectionString> settings)
         {
-            _db = new DbAcess();
+            _db = new DbAcess(settings);
             _customerFactory = new CustomerFactory();
             _orderFactory = new OrderFactory();
             _validations = new ValidationsBLL();

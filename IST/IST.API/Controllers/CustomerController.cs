@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using IST.BLL.DTO;
 using IST.BLL.Services;
 using System;
+using IST.DAL.AppSettings;
+using Microsoft.Extensions.Options;
 
 namespace IST.API.Controllers
 {
@@ -14,9 +16,9 @@ namespace IST.API.Controllers
         private readonly AcessDAL _db;
         private readonly ILogger<CustomerController> _logger;
 
-        public CustomerController(ILogger<CustomerController> logger)
+        public CustomerController(ILogger<CustomerController> logger, IOptions<ConnectionString> settings)
         {
-            _db = new AcessDAL();
+            _db = new AcessDAL(settings);
             _logger = logger;
         }
 
