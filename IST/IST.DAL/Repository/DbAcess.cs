@@ -3,16 +3,17 @@ using System.Linq;
 using System.Collections.Generic;
 using IST.DAL.Data;
 using IST.DAL.Entities;
-
+using IST.DAL.AppSettings;
+using Microsoft.Extensions.Options;
 
 namespace IST.DAL.Repository
 {
     public class DbAcess
     {
         private readonly CustomerDbContext _context;
-        public DbAcess()
+        public DbAcess(IOptions<ConnectionString> settings)
         {
-            _context = new CustomerDbContext();
+            _context = new CustomerDbContext(settings);
         }
 
         public void AddANewOrder(Order order)
